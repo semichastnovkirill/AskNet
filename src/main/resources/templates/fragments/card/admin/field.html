@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <div th:fragment="dataCard">
+        <input type="hidden" id="id" name="id" th:field="${card.id}"/>
+        <div class="row">
+            <div class="col s12">
+                <fieldset>
+                    <legend>Configure Data</legend>
+                    <div class="col s6">
+                        <div class="input-field">
+                            <select id="attr-type" th:disabled="${!#strings.isEmpty(card.id)}" th:field="${card.type.id}" >
+                                <option th:each="r : ${config_type_list}"
+                                        th:value="${r.id}"
+                                        th:text="${r.name}"
+                                        th:selected="${r.id == card.type.id}">
+                                </option>
+                            </select>
+                            <label for="attr-type">Тип</label>
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class="input-field">
+                            <input id="attr-title" name="title" type="text"  class="required validate"
+                                   maxlength="100" th:field="${card.title}"/>
+                            <label for="attr-title">Заголовок</label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="buttons-area">
+            <button type="submit" class="waves-effect waves-light btn">Принять</button>
+        </div>
+
+        <div th:replace="fragments/error :: errorModalFragment"></div>
+    </div>
+</html>

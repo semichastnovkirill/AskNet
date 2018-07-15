@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments/head :: head(~{::title},~{::link}, ~{::script})">
+    <title>Редактирование представления объекта</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/form.css}"/>
+
+    <script th:src="@{/static/js/validate_fields.js}"></script>
+    <script th:src="@{/static/js/admin/view/service.js}"></script>
+    <script th:src="@{/static/js/admin/view/controller.js}"></script>
+</head>
+
+<body>
+<header th:replace="fragments/header :: header(view_edit, user)"></header>
+
+<div class="form-body big-form">
+    <nav class="breadcrumb-nav">
+        <div class="nav-wrapper">
+            <div class="col s12">
+                <a th:href="@{/admin/view}" class="breadcrumb">Представления объектов</a>
+                <a th:href="@{/admin/view/edit}" class="breadcrumb">Редактирование</a>
+            </div>
+        </div>
+    </nav>
+    <form id="data-card-form" class="form-horizontal row" method="PATCH" th:action="@{/admin/view}">
+        <div th:replace="fragments/card/admin/view :: dataCard"></div>
+    </form>
+</div>
+
+<div th:replace="fragments/error :: errorModalFragment"></div>
+</body>
+</html>

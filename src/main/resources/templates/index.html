@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sd="http://www.thymeleaf.org/spring-data"
+      th:with="title='JRedmine'">
+<head th:replace="fragments/head :: head(~{::title},~{::link}, ~{::script})">
+    <title>JRedmine</title>
+</head>
+<body>
+<header th:replace="fragments/header :: header(main, user)"></header>
+<main>
+    <!--<div class="container" th:if="${view}">-->
+        <!--<div th:each="item : ${view.items}">-->
+            <!--<div th:replace="fragments/field :: ${item.view} (${item})"></div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="container" >
+        <div th:replace="fragments/field :: filter"></div>
+        <div th:replace="fragments/field :: table"></div>
+        <div th:replace="fragments/field :: paginator"></div>
+    </div>
+</main>
+</body>
+</html>

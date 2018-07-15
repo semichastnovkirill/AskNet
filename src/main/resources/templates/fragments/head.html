@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title, links, scripts)">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <title th:replace="${title}"></title>
+
+    <link rel="stylesheet" th:href="@{/webjars/materializecss/css/materialize.min.css}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- lib js -->
+    <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/jquery-form/jquery.form.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/materializecss/js/materialize.min.js}"></script>
+
+    <!-- TODO: изменить на локальные скрипты -->
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/packery@2/dist/packery.pkgd.js"></script>
+
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/main.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/form.css}"/>
+
+    <!-- js -->
+    <script th:src="@{/static/js/utils/materialize-functions.js}"></script>
+    <script th:src="@{/static/js/utils/http-response.js}"></script>
+    <script th:src="@{/static/js/main.js}"></script>
+
+    <script> var contextRoot = '[[@{/}]]'; </script>
+
+    <noscript>
+        <meta http-equiv="refresh" th:content="|0;url=@{/badbrowser}|">
+    </noscript>
+
+    <th:block th:if="${links != null}">
+        <th:block th:replace="${links}"/>
+    </th:block>
+
+    <th:block th:if="${scripts != null}">
+        <th:block th:replace="${scripts}"/>
+    </th:block>
+</head>

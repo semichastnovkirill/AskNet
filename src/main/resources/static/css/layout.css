@@ -1,0 +1,97 @@
+.config-type {
+    margin: 0;
+}
+
+.constructor-title {
+    margin: 20px 0;
+}
+
+.packery-drop-placeholder {
+    outline: 3px dashed #555555;
+    outline-offset: -3px;
+    transition: transform 230ms;
+    z-index: 1;
+}
+
+.constructor-config {
+    background-color: #eaeaea;
+    padding: 0;
+}
+
+.constructor-config .item-constructor {
+    background: #1e3685;
+    color: #eaeaea;
+    padding: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 200ms;
+    z-index: 2;
+}
+
+.constructor-config .item-constructor.is-dragging, .constructor-config .item-constructor.is-positioning-post-drag {
+    background: #2848b5;
+    z-index: 100;
+}
+
+.constructor-config .item-constructor:hover {
+    background: #2848b5;
+    cursor: move;
+}
+
+/* Система гридов */
+.constructor-config .item-sizer, .constructor-config .item-constructor {
+    width: 32%;
+}
+
+.constructor-config .item-gutter {
+    width: 2%;
+}
+
+.item-constructor {
+    height: 60px;
+}
+
+/* Элементы - источник */
+.constructor-src {
+    height: 60vh;
+    overflow: auto;
+}
+
+.constructor-src .item-constructor {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #eaeaea;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 200ms;
+}
+
+.constructor-src .item-constructor:last-child {
+    margin-bottom: 0;
+}
+
+.item-constructor-action {
+    padding: 4px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    transition: all 100ms;
+    cursor: pointer;
+}
+
+.item-constructor-action .material-icons {
+    font-size: 20px;
+}
+
+.constructor-src .item-constructor-action:hover {
+    background-color: #2848b5;
+    color: #eee;
+}
+
+.constructor-config .item-constructor-action:hover {
+    background-color: #eee;
+    color: #2848b5;
+}

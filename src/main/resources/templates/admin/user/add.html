@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments/head :: head(~{::title},~{::link}, ~{::script})">
+    <title>Создать новую конфигурацию</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/form.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/lib/xonomy/xonomy.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/jsoneditor/dist/jsoneditor.min.css}"/>
+
+    <script th:src="@{/static/js/validate_fields.js}"></script>
+    <script th:src="@{/static/js/admin/configure/service.js}"></script>
+    <script th:src="@{/static/js/admin/configure/controller.js}"></script>
+    <script th:src="@{/static/lib/xonomy/xonomy.js}"></script>
+    <script th:src="@{/webjars/jsoneditor/dist/jsoneditor.min.js}"></script>
+</head>
+
+<body>
+<header th:replace="fragments/header :: header(configure_add, user)"></header>
+
+<div class="form-body big-form">
+    <nav class="breadcrumb-nav">
+        <div class="nav-wrapper">
+            <div class="col s12">
+                <a th:href="@{/admin/configure}" class="breadcrumb">Конфигурации</a>
+                <a th:href="@{/admin/configure/add}" class="breadcrumb">Создание</a>
+            </div>
+        </div>
+    </nav>
+    <form id="data-card-form" class="form-horizontal row" method="POST" th:action="@{/view}">
+        <div th:replace="fragments/card/admin/configure :: dataCard"></div>
+    </form>
+</div>
+
+<div th:replace="fragments/error :: errorModalFragment"></div>
+</body>
+</html>

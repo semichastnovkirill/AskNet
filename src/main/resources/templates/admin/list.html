@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sd="http://www.thymeleaf.org/spring-data"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments/head :: head(~{::title},~{::link}, ~{::script})">
+    <title>Администрирование</title>
+</head>
+<body>
+<header th:replace="fragments/header :: header('admin_list', user)"></header>
+
+<div class="col s12 main-container">
+    <div class="table-area">
+        <table class="bordered">
+            <tbody>
+                <tr >
+                    <td >
+                        <a class="underline-link" th:href="@{/admin/configure}" >Настройки</a>
+                    </td>
+                </tr>
+                <tr >
+                    <td >
+                        <a class="underline-link" th:href="@{/admin/user}" >Пользователи</a>
+                    </td>
+                </tr>
+                <tr >
+                    <td >
+                        <a class="underline-link" th:href="@{/admin/field}" >Поля объектов</a>
+                    </td>
+                </tr>
+                <tr >
+                    <td >
+                        <a class="underline-link" th:href="@{/admin/class}" >Классы объектов</a>
+                    </td>
+                </tr>
+                <tr >
+                    <td >
+                        <a class="underline-link" th:href="@{/admin/view}" >Отображение объектов</a>
+                    </td>
+                </tr>
+                <tr >
+                    <td >
+                        <a class="underline-link" th:href="@{/admin/rule}" >Правила объектов</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a class="underline-link" th:href="@{/admin/layout}" >Конструктор представлений</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

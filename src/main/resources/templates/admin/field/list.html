@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sd="http://www.thymeleaf.org/spring-data"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments/head :: head(~{::title},~{::link}, ~{::script})">
+    <title>Поля объектов</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/filter.css}"/>
+
+    <script th:src="@{/static/lib/floatThead/jquery.floatThead.min.js}"></script>
+    <script th:src="@{/static/js/filter.js}"></script>
+</head>
+<body>
+<header th:replace="fragments/header :: header('field_list', user)"></header>
+
+<div class="col s12 main-container">
+    <form th:action="@{/admin/field/list}" method="get" th:object="${filter}">
+        <div class="filter-area">
+            <div th:replace="fragments/filter :: filter('/admin/field/add', '/admin/field',  'Поля объектов')"></div>
+        </div>
+    </form>
+    <div class="table-area">
+        <table class="bordered">
+            <thead>
+            <tr>
+                <th>Наименование</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:class="clickable" th:each="item : ${page}"
+                th:onclick="'request(\'' + @{|/admin/field/${item.id}|}+ '\');'">
+                <td th:text="${item.title}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="col s6 no-padding page-info">
+            <div sd:pagination-summary=""></div>
+        </div>
+    </div>
+    <div th:replace="fragments/pagination :: pagination"></div>
+</div>
+
+</body>
+</html>

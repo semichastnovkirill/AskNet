@@ -1,0 +1,63 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <div th:fragment="dataCard">
+        <input type="hidden" id="card" name="card" th:field="${card.card}"/>
+        <input type="hidden" id="id" name="id" th:field="${card.id}"/>
+        <div class="row">
+            <div class="col s12">
+                <fieldset>
+                    <legend>Configure Data</legend>
+                    <div class="col s4">
+                        <div class="input-field">
+                            <select id="type" name="type" th:disabled="${!#strings.isEmpty(card.id)}" >
+                                <option th:each="r : ${config_type_list}"
+                                        th:value="${r.toString()}"
+                                        th:text="${r.getFriendlyName()}"
+                                        th:selected="${r == card.type}">
+                                </option>
+                            </select>
+                            <label for="type">Тип</label>
+                        </div>
+                    </div>
+                    <div class="col s4">
+                        <div class="input-field">
+                            <input id="name" name="name" type="text"  class="required validate"
+                                   maxlength="100" th:field="${card.name}"/>
+                            <label for="name">Наименование</label>
+                        </div>
+                    </div>
+                    <div class="col s4">
+                        <div class="input-field">
+                            <input id="title" name="title" type="text"  class="required validate"
+                                   maxlength="100" th:field="${card.title}"/>
+                            <label for="title">Заголовок</label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+        <div id="schema-area">
+            <div class="row">
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li class="tab col s4" id="editor_xonomy-tab" onclick="ConfigureController.xonomyTabClick(this)"><a class="active" href="#editor_xonomy">Xonomy Editor</a></li>
+                        <li class="tab col s4" id="editor_text-tab" onclick="ConfigureController.textTabClick(this)"><a href="#editor_text">Text Editor</a></li>
+                        <li class="tab col s4" id="editor_demo-tab" onclick="ConfigureController.buildDemo()"><a href="#editor_demo">Предпросмотр</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div id="editor_xonomy" ></div>
+                <textarea class="materialize-textarea" onfocusout="EditorController.xmlFocusOut(this, 'fields')" id="editor_text"></textarea>
+                <div id="editor_demo"></div>
+            </div>
+        </div>
+
+        <div class="buttons-area">
+            <button type="submit" class="waves-effect waves-light btn">Принять</button>
+        </div>
+
+        <div th:replace="fragments/error :: errorModalFragment"></div>
+    </div>
+</html>
